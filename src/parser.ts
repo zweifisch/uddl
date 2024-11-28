@@ -90,7 +90,7 @@ type PropertyNode = Node<{
   attribute?: Array<AttributeNode>,
   Optional?: Array<Token>}
 >
-type AttributeNode = Node<{Identifier: [Token], value?: [ValueNode]}>
+export type AttributeNode = Node<{Identifier: [Token], value?: [ValueNode]}>
 type ValueNode = Node<{Number: [Token]} | {Identifier: [Token]}>
 
 
