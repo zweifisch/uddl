@@ -65,7 +65,36 @@ class SchemaParser extends CstParser {
 const lexer = new Lexer(allTokens)
 const parser = new SchemaParser()
 
-export function parse(input: string) {
+interface Token {
+  image: string,
+  startColumn: number,
+  startLine: number,
+  startOffset: number,
+  endColumn: number,
+  endLine: number,
+  endOffset: number,
+  tokenType: {
+    name: string
+  },
+}
+
+interface Node<T> {
+  name: string
+  children: T
+}
+
+export type File = Node<{entry: Array<EntryNode>}>
+type EntryNode = Node<{Identifier: [Token], property: Array<PropertyNode>}>
+type PropertyNode = Node<{
+  Identifier: [Token, Token],
+  attribute?: Array<AttributeNode>,
+  Optional?: Array<Token>}
+>
+type AttributeNode = Node<{Identifier: [Token], value?: [ValueNode]}>
+type ValueNode = Node<{Number: [Token]} | {Identifier: [Token]}>
+
+
+export function parse(input: string): File {
   const {errors, tokens} = lexer.tokenize(input)
 
   if (errors.length > 0) {
@@ -102,3 +131,11 @@ export function formatError(input: string, error: any) {
   }
   return error
 }
+
+export function isNumber(value: ValueNode): value is Node<{Number: [Token]}> {
+  return 'Number' in value.children
+} 
+
+export function isIdentifier(value: ValueNode): value is Node<{Identifier: [Token]}> {
+  return 'Identifier' in value.children
+} 

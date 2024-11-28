@@ -1,6 +1,5 @@
 # Universal Schema Language
 
-
 ```
 TypeScript <- USL -> SQL
                |
@@ -22,11 +21,8 @@ User {
 ```ts
 export class User {
   id: number
-  
   name?: string
-
   email: string
-  
   gender: number = 0
 }
 ```
@@ -37,7 +33,7 @@ CREATE TABLE user (
   name TEXT,
   email TEXT UNIQUE NOT NULL,
   gender INT DEFAULT 0
-}
+)
 ```
 
 json-schema

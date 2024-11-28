@@ -38,7 +38,7 @@ exports[`gen 1`] = `
         "attributes": [
           {
             "key": "default",
-            "value": NaN,
+            "value": 0,
           },
         ],
         "key": "gender",
