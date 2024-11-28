@@ -1,0 +1,50 @@
+// Bun Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gen 1`] = `
+[
+  {
+    "name": "User",
+    "properties": [
+      {
+        "attributes": [
+          {
+            "key": "primary_key",
+            "value": undefined,
+          },
+          {
+            "key": "auto_increment",
+            "value": undefined,
+          },
+        ],
+        "key": "id",
+        "value": "int",
+      },
+      {
+        "attributes": undefined,
+        "key": "name",
+        "value": "text",
+      },
+      {
+        "attributes": [
+          {
+            "key": "unique",
+            "value": undefined,
+          },
+        ],
+        "key": "email",
+        "value": "text",
+      },
+      {
+        "attributes": [
+          {
+            "key": "default",
+            "value": NaN,
+          },
+        ],
+        "key": "gender",
+        "value": "int",
+      },
+    ],
+  },
+]
+`;

@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "chevrotain": "^11.0.3"
+  },
+  "name": "usdl",
+  "version": "1.0.0",
+  "description": "universal schema description language",
+  "main": "lib/index.js",
+  "devDependencies": { "@types/bun": "^1.1.14", "typescript": "^5.7.2" },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
