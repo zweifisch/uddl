@@ -1,7 +1,7 @@
-# Universal Schema Language
+# Universal Data Description Language
 
 ```
-TypeScript <- USL -> SQL
+TypeScript <- UDDL -> SQL
                |
                v
           json-schema
@@ -21,7 +21,7 @@ User {
 ### -> TypeScript
 
 ```ts
-import {toTS} from 'usl'
+import {toTS} from 'uddl'
 toTS(input)
 ```
 ```ts
@@ -36,7 +36,7 @@ export class User {
 ### -> SQL
 
 ```ts
-import {toSQL} from 'usl'
+import {toSQL} from 'uddl'
 toSQL(input)
 ```
 ```sql
@@ -51,7 +51,7 @@ CREATE TABLE user (
 ### -> json-schema
 
 ```ts
-import {toJSONSchema} from 'usl'
+import {toJSONSchema} from 'uddl'
 toJSONSchema(input)
 ```
 
