@@ -1,15 +1,37 @@
 {
+  "name": "usl",
+  "version": "1.0.0",
+  "description": "universal schema language",
+  "main": "lib/index.js",
   "dependencies": {
     "chevrotain": "^11.0.3"
   },
-  "name": "usdl",
-  "version": "1.0.0",
-  "description": "universal schema description language",
-  "main": "lib/index.js",
-  "devDependencies": { "@types/bun": "^1.1.14", "typescript": "^5.7.2" },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "@types/bun": "^1.1.14",
+    "typescript": "^5.7.2"
   },
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "prepublishOnly": "tsc -p .",
+    "test": "bun test"
+  },
+  "author": "zf.pascal@gmail.com",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zweifisch/usl.git"
+  },
+  "keywords": [
+    "schema",
+    "sql",
+    "json-schema",
+    "ts"
+  ],
+  "bugs": {
+    "url": "https://github.com/zweifisch/usl/issues"
+  },
+  "files": ["lib/", "src/*.ts", "!src/*.test.ts"],
+  "homepage": "https://github.com/zweifisch/usl#readme"
 }

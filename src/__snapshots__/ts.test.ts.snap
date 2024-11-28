@@ -1,6 +1,6 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`genTs 1`] = `
+exports[`toTs 1`] = `
 "export class User {
   id: number
   name?: string

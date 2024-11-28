@@ -49,7 +49,7 @@ const props = {
   boolean: new Set(),
 }
 
-function toSchema(kind: string, attrs: Array<[key: string, value: string | number | undefined]> | undefined) {
+function toSchema(kind: string, attrs: Array<[key: string, value: string | number | undefined]> | undefined) : Definition {
   const alias: Record<string, string> = {
     int: 'integer',
     bool: 'boolean',

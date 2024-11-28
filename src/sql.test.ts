@@ -1,8 +1,7 @@
 import {test, expect} from 'bun:test'
-import { parse } from './parser'
-import { genSQL } from './sql'
+import { toSQL } from './'
 
-test('parse', () => {
+test('toSQL', () => {
 
   const input = `
 User {
@@ -12,5 +11,5 @@ User {
   gender(default:0): int,
 }
 `
-  expect(genSQL(parse(input))).toMatchSnapshot()
+  expect(toSQL(input)).toMatchSnapshot()
 })

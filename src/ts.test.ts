@@ -1,8 +1,8 @@
 import {test, expect} from 'bun:test'
 import { parse } from './parser'
-import { genTS } from './ts'
+import { toTS } from './'
 
-test('genTs', () => {
+test('toTs', () => {
   const input = `
 User {
   id(primary_key auto_increment): int,
@@ -11,5 +11,5 @@ User {
   gender(default:0): int,
 }
 `
-  expect(genTS(parse(input))).toMatchSnapshot()
+  expect(toTS(input)).toMatchSnapshot()
 })

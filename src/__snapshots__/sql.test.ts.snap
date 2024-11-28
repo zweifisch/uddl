@@ -1,6 +1,6 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`parse 1`] = `
+exports[`toSQL 1`] = `
 "CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
