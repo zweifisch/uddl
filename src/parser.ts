@@ -40,7 +40,7 @@ class SchemaParser extends CstParser {
       this.OPTION3(() => this.CONSUME(Optional))
       this.CONSUME(Colon)
       this.CONSUME2(Identifier)
-      this.CONSUME(Comma)
+      this.OPTION4(() => this.CONSUME(Comma))
     })
 
     this.RULE("attribute", () => {

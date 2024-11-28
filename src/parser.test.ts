@@ -18,8 +18,8 @@ test('parse', () => {
 
   const input = `
 User {
-  id(primary_key auto_increment): int,
-  name?: text,
+  id(primary_key auto_increment): int
+  name?: text
   email(unique): text,
   gender(default:0): int,
 }

@@ -52,11 +52,11 @@ exports[`parse 1`] = `
             {
               "endColumn": 1,
               "endLine": 7,
-              "endOffset": 111,
+              "endOffset": 109,
               "image": "}",
               "startColumn": 1,
               "startLine": 7,
-              "startOffset": 111,
+              "startOffset": 109,
               "tokenType": {
                 "CATEGORIES": [],
                 "PATTERN": undefined,
@@ -91,27 +91,6 @@ exports[`parse 1`] = `
                       "tokenTypeIdx": 8,
                     },
                     "tokenTypeIdx": 8,
-                  },
-                ],
-                "Comma": [
-                  {
-                    "endColumn": 38,
-                    "endLine": 3,
-                    "endOffset": 45,
-                    "image": ",",
-                    "startColumn": 38,
-                    "startLine": 3,
-                    "startOffset": 45,
-                    "tokenType": {
-                      "CATEGORIES": [],
-                      "PATTERN": undefined,
-                      "categoryMatches": [],
-                      "categoryMatchesMap": {},
-                      "isParent": false,
-                      "name": "Comma",
-                      "tokenTypeIdx": 9,
-                    },
-                    "tokenTypeIdx": 9,
                   },
                 ],
                 "Identifier": [
@@ -259,11 +238,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 8,
                     "endLine": 4,
-                    "endOffset": 54,
+                    "endOffset": 53,
                     "image": ":",
                     "startColumn": 8,
                     "startLine": 4,
-                    "startOffset": 54,
+                    "startOffset": 53,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -276,36 +255,15 @@ exports[`parse 1`] = `
                     "tokenTypeIdx": 8,
                   },
                 ],
-                "Comma": [
-                  {
-                    "endColumn": 14,
-                    "endLine": 4,
-                    "endOffset": 60,
-                    "image": ",",
-                    "startColumn": 14,
-                    "startLine": 4,
-                    "startOffset": 60,
-                    "tokenType": {
-                      "CATEGORIES": [],
-                      "PATTERN": undefined,
-                      "categoryMatches": [],
-                      "categoryMatchesMap": {},
-                      "isParent": false,
-                      "name": "Comma",
-                      "tokenTypeIdx": 9,
-                    },
-                    "tokenTypeIdx": 9,
-                  },
-                ],
                 "Identifier": [
                   {
                     "endColumn": 6,
                     "endLine": 4,
-                    "endOffset": 52,
+                    "endOffset": 51,
                     "image": "name",
                     "startColumn": 3,
                     "startLine": 4,
-                    "startOffset": 49,
+                    "startOffset": 48,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -320,11 +278,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 13,
                     "endLine": 4,
-                    "endOffset": 59,
+                    "endOffset": 58,
                     "image": "text",
                     "startColumn": 10,
                     "startLine": 4,
-                    "startOffset": 56,
+                    "startOffset": 55,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -341,11 +299,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 7,
                     "endLine": 4,
-                    "endOffset": 53,
+                    "endOffset": 52,
                     "image": "?",
                     "startColumn": 7,
                     "startLine": 4,
-                    "startOffset": 53,
+                    "startOffset": 52,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -367,11 +325,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 16,
                     "endLine": 5,
-                    "endOffset": 77,
+                    "endOffset": 75,
                     "image": ":",
                     "startColumn": 16,
                     "startLine": 5,
-                    "startOffset": 77,
+                    "startOffset": 75,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -388,11 +346,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 22,
                     "endLine": 5,
-                    "endOffset": 83,
+                    "endOffset": 81,
                     "image": ",",
                     "startColumn": 22,
                     "startLine": 5,
-                    "startOffset": 83,
+                    "startOffset": 81,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -409,11 +367,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 7,
                     "endLine": 5,
-                    "endOffset": 68,
+                    "endOffset": 66,
                     "image": "email",
                     "startColumn": 3,
                     "startLine": 5,
-                    "startOffset": 64,
+                    "startOffset": 62,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -428,11 +386,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 21,
                     "endLine": 5,
-                    "endOffset": 82,
+                    "endOffset": 80,
                     "image": "text",
                     "startColumn": 18,
                     "startLine": 5,
-                    "startOffset": 79,
+                    "startOffset": 77,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -449,11 +407,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 8,
                     "endLine": 5,
-                    "endOffset": 69,
+                    "endOffset": 67,
                     "image": "(",
                     "startColumn": 8,
                     "startLine": 5,
-                    "startOffset": 69,
+                    "startOffset": 67,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -470,11 +428,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 15,
                     "endLine": 5,
-                    "endOffset": 76,
+                    "endOffset": 74,
                     "image": ")",
                     "startColumn": 15,
                     "startLine": 5,
-                    "startOffset": 76,
+                    "startOffset": 74,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -494,11 +452,11 @@ exports[`parse 1`] = `
                         {
                           "endColumn": 14,
                           "endLine": 5,
-                          "endOffset": 75,
+                          "endOffset": 73,
                           "image": "unique",
                           "startColumn": 9,
                           "startLine": 5,
-                          "startOffset": 70,
+                          "startOffset": 68,
                           "tokenType": {
                             "CATEGORIES": [],
                             "PATTERN": undefined,
@@ -524,11 +482,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 20,
                     "endLine": 6,
-                    "endOffset": 104,
+                    "endOffset": 102,
                     "image": ":",
                     "startColumn": 20,
                     "startLine": 6,
-                    "startOffset": 104,
+                    "startOffset": 102,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -545,11 +503,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 25,
                     "endLine": 6,
-                    "endOffset": 109,
+                    "endOffset": 107,
                     "image": ",",
                     "startColumn": 25,
                     "startLine": 6,
-                    "startOffset": 109,
+                    "startOffset": 107,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -566,11 +524,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 8,
                     "endLine": 6,
-                    "endOffset": 92,
+                    "endOffset": 90,
                     "image": "gender",
                     "startColumn": 3,
                     "startLine": 6,
-                    "startOffset": 87,
+                    "startOffset": 85,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -585,11 +543,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 24,
                     "endLine": 6,
-                    "endOffset": 108,
+                    "endOffset": 106,
                     "image": "int",
                     "startColumn": 22,
                     "startLine": 6,
-                    "startOffset": 106,
+                    "startOffset": 104,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -606,11 +564,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 9,
                     "endLine": 6,
-                    "endOffset": 93,
+                    "endOffset": 91,
                     "image": "(",
                     "startColumn": 9,
                     "startLine": 6,
-                    "startOffset": 93,
+                    "startOffset": 91,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -627,11 +585,11 @@ exports[`parse 1`] = `
                   {
                     "endColumn": 19,
                     "endLine": 6,
-                    "endOffset": 103,
+                    "endOffset": 101,
                     "image": ")",
                     "startColumn": 19,
                     "startLine": 6,
-                    "startOffset": 103,
+                    "startOffset": 101,
                     "tokenType": {
                       "CATEGORIES": [],
                       "PATTERN": undefined,
@@ -651,11 +609,11 @@ exports[`parse 1`] = `
                         {
                           "endColumn": 17,
                           "endLine": 6,
-                          "endOffset": 101,
+                          "endOffset": 99,
                           "image": ":",
                           "startColumn": 17,
                           "startLine": 6,
-                          "startOffset": 101,
+                          "startOffset": 99,
                           "tokenType": {
                             "CATEGORIES": [],
                             "PATTERN": undefined,
@@ -672,11 +630,11 @@ exports[`parse 1`] = `
                         {
                           "endColumn": 16,
                           "endLine": 6,
-                          "endOffset": 100,
+                          "endOffset": 98,
                           "image": "default",
                           "startColumn": 10,
                           "startLine": 6,
-                          "startOffset": 94,
+                          "startOffset": 92,
                           "tokenType": {
                             "CATEGORIES": [],
                             "PATTERN": undefined,
@@ -696,11 +654,11 @@ exports[`parse 1`] = `
                               {
                                 "endColumn": 18,
                                 "endLine": 6,
-                                "endOffset": 102,
+                                "endOffset": 100,
                                 "image": "0",
                                 "startColumn": 18,
                                 "startLine": 6,
-                                "startOffset": 102,
+                                "startOffset": 100,
                                 "tokenType": {
                                   "CATEGORIES": [],
                                   "PATTERN": undefined,
