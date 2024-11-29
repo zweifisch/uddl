@@ -1,4 +1,4 @@
-import {File, isIdentifier, isNumber} from './parser'
+import {File, isIdentifier, isNumber, ValueNode, Token} from './parser'
 
 export type Flavor = 'sqlite' | 'postgresql'
 
@@ -6,6 +6,13 @@ const aliases: Record<Flavor, Record<string, string>> = {
   sqlite: {
     primary_key: 'PRIMARY KEY',
     auto_increment: 'AUTOINCREMENT',
+    unique: 'UNIQUE',
+    default: 'DEFAULT',
+
+    maxLength: 'maxLength',
+    minLength: 'minLength',
+    maximum: 'maximum',
+    minimum: 'minimum',
 
     smallint: 'INTEGER',
     integer: 'INTEGER',
@@ -27,6 +34,13 @@ const aliases: Record<Flavor, Record<string, string>> = {
 
   postgresql: {
     primary_key: 'PRIMARY KEY',
+    unique: 'UNIQUE',
+    default: 'DEFAULT',
+
+    maxLength: 'maxLength',
+    minLength: 'minLength',
+    maximum: 'maximum',
+    minimum: 'minimum',
 
     auto_increment: 'BIGSERIAL',
     double_precision: 'DOUBLE PRECISION',
@@ -40,47 +54,89 @@ const aliases: Record<Flavor, Record<string, string>> = {
   }
 }
 
+type AttrMap = Record<string, string | undefined>
+type Handler = (key: string, typ: string, attrs: AttrMap) => [string, AttrMap] 
+
+const omit: Handler = (key, typ, attrs) => {
+  const {[key]: _, ...rest} = attrs
+  return [typ, rest]
+}
+
+const attrHandler: Record<Flavor, Record<string, Handler>> = {
+  sqlite: {
+    maxLength: omit,
+    minLength: omit,
+    maximum: omit,
+    minimum: omit,
+  },
+  postgresql: {
+    maxLength(_, typ, attrs) {
+      const {maxLength, ...rest} = attrs
+      return [`VARCHAR(${maxLength})`, rest]
+    },
+    maximum(_, typ, attrs) {
+      const {maximum, ...rest} = attrs
+      if (typ === 'BIGINT' && maximum) {
+        if (parseFloat(maximum) < 32768) {
+          typ = 'SMALLINT'
+        } else if (parseFloat(maximum) < 2147483648) {
+          typ = 'INTEGER'
+        }
+      }
+      return [typ, rest]
+    },
+    minLength: omit,
+    minimum: omit,
+    BIGSERIAL: (_, _typ, attrs) => ['', attrs],
+    SERIAL: (_, _typ, attrs) => ['', attrs],
+    SMALLSERIAL: (_, _typ, attrs) => ['', attrs],
+  }
+}
+
 function value(input: string, flavor?: Flavor) {
   return aliases[flavor || 'sqlite'][input] || input.toUpperCase()
 }
 
 function attributes(
   typ: string,
-  attrs: Array<[string, number | string | undefined]> | undefined,
+  attrs: Array<[key: Token, val: Token | undefined]> | undefined,
   optional: boolean,
   flavor?: Flavor
 ): string {
-  const kvs = attrs ? Object.fromEntries(
-    attrs.map(([k, v]) => [aliases[flavor || 'sqlite'][k] || k, v])) : {}
-  if (!optional && !('PRIMARY KEY' in kvs)) {
-    attrs = [...attrs || [], ['NOT NULL', undefined]]
-  }
-  if (!attrs?.length) {
-    return typ
-  }
-  if (flavor !== 'postgresql') {
-    return [
-      typ,
-      ...Object.entries(kvs).flatMap(([k, v]) => v === undefined ? [k] : [k, v])
-    ].join(' ')
+  if (!attrs) {
+    return optional ? typ : `${typ} NOT NULL`
   }
 
-  if (typ === 'TEXT' && kvs['maxLength']) {
-    typ = `VARCHAR(${kvs.maxLength})`
-    delete kvs['maxLength']
-  }
-  if (typ === 'BIGINT' && kvs['maximum']) {
-    if (kvs['maximum'] as number < 32768) {
-      typ = 'SMALLINT'
-    } else if (kvs['maximum'] as number < 2147483648) {
-      typ = 'INTEGER'
+  flavor = flavor || 'sqlite'
+
+  let kvs = Object.fromEntries(attrs.map(([k, v]) => {
+    const name = aliases[flavor][k.image]
+    if (!name) {
+      const error = new Error(`Unknow attribute: ${k.image} at ${k.startLine},${k.startColumn}`)
+      console.log(error.stack)
+      throw error
     }
-    delete kvs['maximum']
+    return [name, v?.image]
+  }))
+
+  for (const name of Object.keys(kvs)) {
+    if (attrHandler[flavor][name]) {
+      [typ, kvs] = attrHandler[flavor][name](name, typ, kvs)
+    }
   }
+
   return [
-    ...['BIGSERIAL', 'SERIAL', 'SMALLSERIAL'].some(x => x in kvs) ? [] : [typ],
+    typ,
+    !optional && !('PRIMARY KEY' in kvs) && 'NOT NULL',
     ...Object.entries(kvs).flatMap(([k, v]) => v === undefined ? [k] : [k, v])
-  ].join(' ')
+  ].filter(Boolean).join(' ')
+}
+
+function getValue(node: ValueNode | undefined): Token | undefined {
+  if (!node) {
+    return undefined
+  }
+  return isIdentifier(node) ? node.children.Identifier[0] : isNumber(node) ? node.children.Number[0] : undefined
 }
 
 export const genSQL = (input: File, opts?: {flavor: Flavor}) =>
@@ -90,11 +146,8 @@ export const genSQL = (input: File, opts?: {flavor: Flavor}) =>
         attributes(
           value(property.children.Identifier[1].image, opts?.flavor),
           property.children.attribute?.map(attr => [
-            attr.children.Identifier[0].image,
-            attr.children.value
-              ? (isIdentifier(attr.children.value[0]) ? attr.children.value[0].children.Identifier[0].image :
-                isNumber(attr.children.value[0]) ? parseFloat(attr.children.value[0].children.Number[0].image) : undefined)
-              : undefined]),
+            attr.children.Identifier[0],
+            getValue(attr.children.value?.[0])]),
           !!property.children.Optional,
           opts?.flavor
         )}`

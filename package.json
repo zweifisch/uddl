@@ -1,6 +1,6 @@
 {
   "name": "uddl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "universal data description language",
   "main": "lib/index.js",
   "dependencies": {

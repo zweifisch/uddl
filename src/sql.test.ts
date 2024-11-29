@@ -5,8 +5,8 @@ test('toSQL', () => {
   const input = `
 User {
   id(primary_key auto_increment): int,
-  name?: text,
-  email(unique): text,
+  name?: string,
+  email(unique): string,
   gender(default:0): int,
 }
 `
@@ -35,4 +35,22 @@ User {
 }
 `
   expect(toSQL(input, {flavor: 'postgresql'})).toMatchSnapshot()
+})
+
+test('toSQL unknow attrs', () => {
+  const input = `
+User {
+  email(foo:255): text
+}
+`
+  expect(() => toSQL(input, {flavor: 'postgresql'})).toThrowError(new Error('Unknow attribute: foo at 3,9'))
+})
+
+test('toSQL skip attrs', () => {
+  const input = `
+User {
+  email(maxLength:255): string
+}
+`
+  expect(toSQL(input, {flavor: 'sqlite'})).toMatchSnapshot()
 })

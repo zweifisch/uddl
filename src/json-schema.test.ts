@@ -7,8 +7,8 @@ test('toJSONSchema', () => {
 User {
   id(primary_key auto_increment): int,
   name?: text,
-  email(unique): text,
-  gender(default:1): int,
+  email(unique maxLength: 255): text,
+  gender(default:1 maximum: 2): int,
 }
 `
   expect(toJSONSchema(input)).toMatchSnapshot()

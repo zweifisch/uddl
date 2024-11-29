@@ -12,9 +12,9 @@ Example:
 ```
 User {
   id(primary_key auto_increment): int
-  name?: text
-  email(unique): text
-  gender(default:0): int
+  name?: string
+  email(unique maxLength:255): string
+  gender(default:0 maximum:2): int
 }
 ```
 
@@ -49,36 +49,18 @@ CREATE TABLE "user" (
 );
 ```
 
+#### postgresql
+
 ```ts
 toSQL(input, {flavor: 'postgresql'})
 ```
 
 ```sql
 CREATE TABLE "user" (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT UNIQUE NOT NULL,
-  gender INTEGER DEFAULT 0 NOT NULL
-);
-```
-
-```ts
-import {toSQL} from 'uddl'
-toSQL(`
-User {
-  id(primary_key auto_increment): int
-  name(maxLength:255)?: text
-  email(maxLength:255): text
-  gender(default:0, maximum:3): int
-}`, {flavor: 'postgresql'})
-```
-
-```sql
-CREATE TABLE "user" (
   id PRIMARY KEY BIGSERIAL,
-  name VARCHAR(255),
-  email VARCHAR(255),
-  gender SMALLINT default 0
+  name TEXT,
+  email VARCHAR(255) NOT NULL,
+  gender SMALLINT NOT NULL DEFAULT 0
 );
 ```
 
@@ -96,9 +78,11 @@ toJSONSchema(input)
       "type": "object",
       "properties": {
         "email": {
-          "type": "string"
+          "type": "string",
+          "maxLength": 255
         },
         "gender": {
+          "maximum": 2,
           "type": "integer"
         },
         "id": {

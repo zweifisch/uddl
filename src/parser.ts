@@ -65,7 +65,7 @@ class SchemaParser extends CstParser {
 const lexer = new Lexer(allTokens)
 const parser = new SchemaParser()
 
-interface Token {
+export interface Token {
   image: string,
   startColumn: number,
   startLine: number,
@@ -91,7 +91,7 @@ type PropertyNode = Node<{
   Optional?: Array<Token>}
 >
 export type AttributeNode = Node<{Identifier: [Token], value?: [ValueNode]}>
-type ValueNode = Node<{Number: [Token]} | {Identifier: [Token]}>
+export type ValueNode = Node<{Number: [Token]} | {Identifier: [Token]}>
 
 
 export function parse(input: string): File {

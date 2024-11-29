@@ -6,9 +6,11 @@ exports[`toJSONSchema 1`] = `
     "User": {
       "properties": {
         "email": {
+          "maxLength": 255,
           "type": "string",
         },
         "gender": {
+          "maximum": 2,
           "type": "integer",
         },
         "id": {

@@ -4,8 +4,8 @@ exports[`toSQL 1`] = `
 "CREATE TABLE "user" (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
-  email TEXT unique,
-  gender INTEGER default 0
+  email TEXT NOT NULL UNIQUE,
+  gender INTEGER NOT NULL DEFAULT 0
 );"
 `;
 
@@ -13,8 +13,8 @@ exports[`toSQL psql 1`] = `
 "CREATE TABLE "user" (
   id PRIMARY KEY BIGSERIAL,
   name TEXT,
-  email TEXT unique,
-  gender BIGINT default 0
+  email TEXT NOT NULL UNIQUE,
+  gender BIGINT NOT NULL DEFAULT 0
 );"
 `;
 
@@ -22,7 +22,13 @@ exports[`toSQL psql2 1`] = `
 "CREATE TABLE "user" (
   id PRIMARY KEY BIGSERIAL,
   name VARCHAR(255),
-  email VARCHAR(255),
-  gender SMALLINT default 0
+  email VARCHAR(255) NOT NULL,
+  gender SMALLINT NOT NULL DEFAULT 0
+);"
+`;
+
+exports[`toSQL skip attrs 1`] = `
+"CREATE TABLE "user" (
+  email TEXT NOT NULL
 );"
 `;
