@@ -39,12 +39,46 @@ export class User {
 import {toSQL} from 'uddl'
 toSQL(input)
 ```
+
 ```sql
-CREATE TABLE user (
+CREATE TABLE "user" (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
   email TEXT UNIQUE NOT NULL,
   gender INTEGER DEFAULT 0 NOT NULL
+);
+```
+
+```ts
+toSQL(input, {flavor: 'postgresql'})
+```
+
+```sql
+CREATE TABLE "user" (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT UNIQUE NOT NULL,
+  gender INTEGER DEFAULT 0 NOT NULL
+);
+```
+
+```ts
+import {toSQL} from 'uddl'
+toSQL(`
+User {
+  id(primary_key auto_increment): int
+  name(maxLength:255)?: text
+  email(maxLength:255): text
+  gender(default:0, maximum:3): int
+}`, {flavor: 'postgresql'})
+```
+
+```sql
+CREATE TABLE "user" (
+  id PRIMARY KEY BIGSERIAL,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  gender SMALLINT default 0
 );
 ```
 

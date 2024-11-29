@@ -6,6 +6,6 @@ import {genJSONSchema} from './json-schema'
 
 export {parse, genSQL, genTS, genJSONSchema}
 
-export const toSQL = (input: string) => genSQL(parse(input))
+export const toSQL = (input: string, opts?: {flavor: 'sqlite' | 'postgresql'}) => genSQL(parse(input), opts)
 export const toTS = (input: string) => genTS(parse(input))
 export const toJSONSchema = (input: string) => genJSONSchema(parse(input))

@@ -1,10 +1,28 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`toSQL 1`] = `
-"CREATE TABLE user (
+"CREATE TABLE "user" (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT,
-  email TEXT UNIQUE NOT NULL,
-  gender INTEGER DEFAULT 0 NOT NULL
+  email TEXT unique,
+  gender INTEGER default 0
+);"
+`;
+
+exports[`toSQL psql 1`] = `
+"CREATE TABLE "user" (
+  id PRIMARY KEY BIGSERIAL,
+  name TEXT,
+  email TEXT unique,
+  gender BIGINT default 0
+);"
+`;
+
+exports[`toSQL psql2 1`] = `
+"CREATE TABLE "user" (
+  id PRIMARY KEY BIGSERIAL,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  gender SMALLINT default 0
 );"
 `;
