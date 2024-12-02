@@ -1,10 +1,10 @@
 {
   "name": "uddl",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "universal data description language",
   "main": "lib/index.js",
   "dependencies": {
-    "chevrotain": "^11.0.3"
+    "chevrotain": "10"
   },
   "devDependencies": {
     "@types/bun": "^1.1.14",

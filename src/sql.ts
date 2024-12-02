@@ -30,6 +30,9 @@ const aliases: Record<Flavor, Record<string, string>> = {
 
     int: 'INTEGER',
     number: 'REAL',
+
+    datetime: 'DATETIME',
+    current_timestamp: 'CURRENT_TIMESTAMP'
   },
 
   postgresql: {
@@ -50,7 +53,13 @@ const aliases: Record<Flavor, Record<string, string>> = {
     string: 'TEXT',
     number: 'DOUBLE PRECISION',
 
-    varchar: 'VARCHAR'
+    varchar: 'VARCHAR',
+
+    date: 'DATE',
+    time: 'TIME',
+    tiemstamp: 'TIMESTAMP',
+    interval: 'INTERVAL',
+    current_timestamp: 'CURRENT_TIMESTAMP'
   }
 }
 
